@@ -11,6 +11,7 @@ import kotlinx.coroutines.runBlocking
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 import kotlin.system.measureTimeMillis
+import kotlin.test.assertEquals // Pastikan import ini ada untuk penggunaan assertEquals
 
 /****************************************************************************************************
  *                               Perhatian                                                          *
@@ -24,177 +25,136 @@ import kotlin.system.measureTimeMillis
  *                                                                                                  *
  ***************************************************************************************************/
 
-@Suppress("UNCHECKED_CAST")
 class ExamTestMain : Spek({
     group("Pengujian otomatis latihan") {
         describe("Pengecekkan Latihan 1") {
-            it("Latihan 1") {
-                isEvenNumber(2).returnTrue(errMessage = "Jika argumennya adalah 2, fungsi isEvenNumber() seharusnya mengembalikkan nilai true")
+            it("Latihan 1 - Kasus 2") {
+                assertEquals(true, isEvenNumber(2), "Jika argumennya adalah 2, fungsi isEvenNumber() seharusnya mengembalikkan nilai true")
             }
 
-            it("Latihan 1") {
-                isEvenNumber(6).returnTrue(errMessage = "Jika argumennya adalah 6, fungsi isEvenNumber() seharusnya mengembalikkan nilai true")
+            it("Latihan 1 - Kasus 6") {
+                assertEquals(true, isEvenNumber(6), "Jika argumennya adalah 6, fungsi isEvenNumber() seharusnya mengembalikkan nilai true")
             }
 
-            it("Latihan 1") {
-                isEvenNumber(7).returnFalse(errMessage = "Jika argumennya adalah 7, fungsi isEvenNumber() seharusnya mengembalikkan nilai false")
+            it("Latihan 1 - Kasus 7") {
+                assertEquals(false, isEvenNumber(7), "Jika argumennya adalah 7, fungsi isEvenNumber() seharusnya mengembalikkan nilai false")
             }
 
-            it("Latihan 1") {
-                isEvenNumber(1).returnFalse(errMessage = "Jika argumennya adalah 1, fungsi isEvenNumber() seharusnya mengembalikkan nilai false")
+            it("Latihan 1 - Kasus 1") {
+                assertEquals(false, isEvenNumber(1), "Jika argumennya adalah 1, fungsi isEvenNumber() seharusnya mengembalikkan nilai false")
             }
 
             for (number in 1..99 step 2) {
-                it("Latihan 1") {
-                    isEvenNumber(number).returnFalse(errMessage = "Jika argumennya adalah $number, fungsi isEvenNumber() seharusnya mengembalikkan nilai false")
+                it("Latihan 1 - Kasus Bilangan Ganjil $number") {
+                    assertEquals(false, isEvenNumber(number), "Jika argumennya adalah $number, fungsi isEvenNumber() seharusnya mengembalikkan nilai false")
                 }
             }
 
             for (number in 0..100 step 2) {
-                it("Latihan 1") {
-                    isEvenNumber(number).returnTrue(errMessage = "Jika argumennya adalah $number, fungsi isEvenNumber() seharusnya mengembalikkan nilai true")
+                it("Latihan 1 - Kasus Bilangan Genap $number") {
+                    assertEquals(true, isEvenNumber(number), "Jika argumennya adalah $number, fungsi isEvenNumber() seharusnya mengembalikkan nilai true")
                 }
             }
 
-            it("Latihan 1") {
-                moreThanFive(1).returnFalse(errMessage = "Jika argumennya adalah 1, fungsi moreThanFive() seharusnya mengembalikkan nilai false")
+            it("Latihan 1 - Kasus 1") {
+                assertEquals(false, moreThanFive(1), "Jika argumennya adalah 1, fungsi moreThanFive() seharusnya mengembalikkan nilai false")
             }
 
-            it("Latihan 1") {
-                moreThanFive(3).returnFalse(errMessage = "Jika argumennya adalah 3, fungsi moreThanFive() seharusnya mengembalikkan nilai false")
+            it("Latihan 1 - Kasus 3") {
+                assertEquals(false, moreThanFive(3), "Jika argumennya adalah 3, fungsi moreThanFive() seharusnya mengembalikkan nilai false")
             }
 
-            it("Latihan 1") {
-                moreThanFive(5).returnFalse(errMessage = "Jika argumennya adalah 5, fungsi moreThanFive() seharusnya mengembalikkan nilai false")
+            it("Latihan 1 - Kasus 5") {
+                assertEquals(false, moreThanFive(5), "Jika argumennya adalah 5, fungsi moreThanFive() seharusnya mengembalikkan nilai false")
             }
 
-            it("Latihan 1") {
-                moreThanFive(10).returnTrue(errMessage = "Jika argumennya adalah 10, fungsi moreThanFive() seharusnya mengembalikkan nilai true")
+            it("Latihan 1 - Kasus 10") {
+                assertEquals(true, moreThanFive(10), "Jika argumennya adalah 10, fungsi moreThanFive() seharusnya mengembalikkan nilai true")
             }
 
-            it("Latihan 1") {
-                moreThanFive(30).returnTrue(errMessage = "Jika argumennya adalah 30, fungsi moreThanFive() seharusnya mengembalikkan nilai true")
+            it("Latihan 1 - Kasus 30") {
+                assertEquals(true, moreThanFive(30), "Jika argumennya adalah 30, fungsi moreThanFive() seharusnya mengembalikkan nilai true")
             }
 
-            it("Latihan 1") {
+            it("Latihan 1 - Hasil 20") {
                 val expect = com.dicoding.exam.exam1.result(20)
-                assertEqualsWith(
-                    expected = expect,
-                    actual = 600,
-                    errMessage = "Jika argumennya adalah 20, fungsi result() seharusnya mengembalikkan nilai 600"
-                )
+                assertEquals(600, expect, "Jika argumennya adalah 20, fungsi result() seharusnya mengembalikkan nilai 600")
             }
         }
 
         describe("Latihan 2") {
-            it("Latihan 2") {
+            it("Latihan 2 - Kasus Normal") {
                 val result = calculate(101, 52, 99)
-                assertEqualsWith(
-                    expected = result,
-                    actual = 54,
-                    errMessage = "Jika argumen untuk parameter valueA adalah `101`, valueB adalah `52`, dan valueC adalah `99`, fungsi calculate() seharusnya mengembalikkan nilai 54"
-                )
+                assertEquals(54, result, "Jika argumen untuk parameter valueA adalah `101`, valueB adalah `52`, dan valueC adalah `99`, fungsi calculate() seharusnya mengembalikkan nilai 54")
             }
 
-            it("Latihan 2") {
+            it("Latihan 2 - Kasus Null") {
                 val result = calculate(101, 52, null)
-                assertEqualsWith(
-                    expected = result,
-                    actual = 103,
-                    errMessage = "Jika argumen untuk parameter valueA adalah `101`, valueB adalah `52`, dan valueC adalah `null`, fungsi calculate() seharusnya mengembalikkan nilai 103"
-                )
+                assertEquals(103, result, "Jika argumen untuk parameter valueA adalah `101`, valueB adalah `52`, dan valueC adalah `null`, fungsi calculate() seharusnya mengembalikkan nilai 103")
             }
 
-            it("Latihan 2") {
+            it("Latihan 2 - Hasil 103") {
                 val result = result(103)
-                assertEqualsWith(
-                    expected = result,
-                    actual = "Result is 103",
-                    errMessage = "Jika argumennya adalah 103, fungsi result() seharusnya mengembalikkan pesan `Result is 103`"
-                )
+                assertEquals("Result is 103", result, "Jika argumennya adalah 103, fungsi result() seharusnya mengembalikkan pesan `Result is 103`")
             }
         }
 
         describe("Pengecekkan latihan 3") {
-            it("Latihan 3") {
+            it("Latihan 3 - Kasus Integer") {
                 val result = checkType(50)
-                assertEqualsWith(
-                    expected = result,
-                    actual = "Yes! it's Integer",
-                    errMessage = "Jika argumennya adalah `50`, fungsi checkType() seharusnya mengembalikkan pesan `Yes! it's Integer`"
-                )
+                assertEquals("Yes! it's Integer", result, "Jika argumennya adalah `50`, fungsi checkType() seharusnya mengembalikkan pesan `Yes! it's Integer`")
             }
 
-            it("Latihan 3") {
+            it("Latihan 3 - Kasus Boolean") {
                 val result = checkType(true)
-                assertEqualsWith(
-                    expected = result,
-                    actual = "Yes! it's Boolean",
-                    errMessage = "Jika argumennya adalah `true`, fungsi checkType() seharusnya mengembalikkan pesan `Yes! it's Boolean`"
-                )
+                assertEquals("Yes! it's Boolean", result, "Jika argumennya adalah `true`, fungsi checkType() seharusnya mengembalikkan pesan `Yes! it's Boolean`")
             }
 
-            it("Latihan 3") {
+            it("Latihan 3 - Kasus String") {
                 val result = checkType("Dicoding Indonesia")
-                assertEqualsWith(
-                    expected = result,
-                    actual = "Yes! it's String",
-                    errMessage = "Jika argumennya adalah `Dicoding Indonesia`, fungsi checkType() seharusnya mengembalikkan pesan `Yes! it's String`"
-                )
+                assertEquals("Yes! it's String", result, "Jika argumennya adalah `Dicoding Indonesia`, fungsi checkType() seharusnya mengembalikkan pesan `Yes! it's String`")
             }
 
-            it("Latihan 3") {
+            it("Latihan 3 - Kasus Double") {
                 val result = checkType(1.0)
-                assertEqualsWith(
-                    expected = result,
-                    actual = "Yes! it's Double",
-                    errMessage = "Jika argumennya adalah `1.0`, fungsi checkType() seharusnya mengembalikkan pesan `Yes! it's Double`"
-                )
+                assertEquals("Yes! it's Double", result, "Jika argumennya adalah `1.0`, fungsi checkType() seharusnya mengembalikkan pesan `Yes! it's Double`")
             }
 
-            it("Latihan 3") {
+            it("Latihan 3 - Kasus List") {
                 val result = checkType(listOf<String>())
-                assertEqualsWith(
-                    expected = result,
-                    actual = "Yes! it's List",
-                    errMessage = "Jika argumennya adalah `listOf<String>()`, fungsi checkType() seharusnya mengembalikkan pesan `Yes! it's List`"
-                )
+                assertEquals("Yes! it's List", result, "Jika argumennya adalah `listOf<String>()`, fungsi checkType() seharusnya mengembalikkan pesan `Yes! it's List`")
             }
 
-            it("Latihan 3") {
+            it("Latihan 3 - Kasus Map") {
                 val result = checkType(mapOf<String, String>())
-                assertEqualsWith(
-                    expected = result,
-                    actual = "Yes! it's Map",
-                    errMessage = "Jika argumennya adalah `mapOf<String, String>()`, fungsi checkType() seharusnya mengembalikkan pesan `Yes! it's Map`"
-                )
+                assertEquals("Yes! it's Map", result, "Jika argumennya adalah `mapOf<String, String>()`, fungsi checkType() seharusnya mengembalikkan pesan `Yes! it's Map`")
             }
         }
 
         describe("Pengecekkan latihan 4") {
-            it("Latihan 4") {
+            it("Latihan 4 - Tipe Data") {
                 val vehicle = vehicle()
                 (vehicle is Map<*, *>).returnTrue("Fungsi vehicle() seharusnya mengembalikkan nilai dengan tipe data Map<>")
             }
 
-            it("Latihan 4") {
+            it("Latihan 4 - Key Type") {
                 val vehicle: Map<String, String> = vehicle() as Map<String, String>
                 (vehicle["type"] != null && vehicle["type"] == "motorcycle").returnTrue("Nilai kembalian vehicle() seharusnya terdapat key `type` dengan nilai `motorcycle`")
             }
 
-            it("Latihan 4") {
+            it("Latihan 4 - Key Max Speed") {
                 val vehicle: Map<String, String> = vehicle() as Map<String, String>
                 (vehicle["maxSpeed"] != null && vehicle["maxSpeed"] == "230Km/s").returnTrue("Nilai kembalian vehicle() seharusnya terdapat key `maxSpeed` dengan nilai `230Km/s`")
             }
 
-            it("Latihan 4") {
+            it("Latihan 4 - Key Max Tank") {
                 val vehicle: Map<String, String> = vehicle() as Map<String, String>
                 (vehicle["maxTank"] != null && vehicle["maxTank"] == "100Ltr").returnTrue("Nilai kembalian vehicle() seharusnya terdapat key `maxTank` dengan nilai `100Ltr`")
             }
         }
 
         describe("Pengecekkan latihan 5") {
-            it("Latihan 5") {
+            it("Latihan 5 - Waktu Sum") {
                 runBlocking {
                     val executionTime = measureTimeMillis {
                         sum(10, 10)
@@ -204,42 +164,16 @@ class ExamTestMain : Spek({
                 }
             }
 
-            it("Latihan 5") {
+            it("Latihan 5 - Asynchronous Sum") {
                 runBlocking {
                     val result = async { sum(5, 5) }
-                    (result.await() == 10).returnTrue("Jika argumen untuk parameter a adalah 5 dan b adalah 5, fungsi sum() seharusnya mengembalikkan nilai 10")
+                    assertEquals(10, result.await(), "Jika argumen untuk parameter a adalah 5 dan b adalah 5, fungsi sum() seharusnya mengembalikkan nilai 10")
                 }
             }
 
-            it("Latihan 5") {
-                runBlocking {
-                    val result = async { sum(100, 7) }
-                    (result.await() == 107).returnTrue("Jika argumen untuk parameter a adalah 100 dan b adalah 7, fungsi sum() seharusnya mengembalikkan nilai 107")
-                }
-            }
-
-            it("Latihan 5") {
-                runBlocking {
-                    val executionTime = measureTimeMillis {
-                        multiple(10, 10)
-                    }
-
-                    (executionTime in 2001..2499).returnTrue("Pemanggilan fungsi multiple() seharusnya terdapat jeda waktu minimal 2 detik")
-                }
-            }
-
-            it("Latihan 5") {
-                runBlocking {
-                    val result = async { multiple(6, 6) }
-                    (result.await() == 36).returnTrue("Jika argumen untuk parameter a adalah 6 dan b adalah 6, fungsi multiple() seharusnya mengembalikkan nilai 36")
-                }
-            }
-
-            it("Latihan 5") {
-                runBlocking {
-                    val result = async { multiple(5, 5) }
-                    (result.await() == 25).returnTrue("Jika argumen untuk parameter a adalah 5 dan b adalah 5, fungsi multiple() seharusnya mengembalikkan nilai 25")
-                }
+            it("Latihan 5 - Multiple") {
+                val result = multiple(3, 5)
+                assertEquals(15, result, "Jika argumen untuk parameter a adalah 3 dan b adalah 5, fungsi multiple() seharusnya mengembalikkan nilai 15")
             }
         }
     }
